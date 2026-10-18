@@ -258,7 +258,6 @@ body{font-family:var(--sans);font-weight:300;color:var(--cream);background:#0d0b
   <img id="vViewImg" alt="Voucher Atelier Amirante" draggable="true">
   <p class="vv-note">Per salvarlo: <b>tieni premuto sull'immagine</b> e scegli «Salva immagine» / «Aggiungi a Foto», oppure fai uno <b>screenshot</b>.</p>
   <div class="vv-actions">
-    <a class="vv-btn" id="vViewDl" download>Scarica</a>
     <button class="vv-btn vv-close" type="button" id="vViewClose">Chiudi</button>
   </div>
 </div>
@@ -272,7 +271,6 @@ body{font-family:var(--sans);font-weight:300;color:var(--cream);background:#0d0b
   var closeBtn = document.getElementById('vmClose');
   var view = document.getElementById('voucherView');
   var viewImg = document.getElementById('vViewImg');
-  var viewDl = document.getElementById('vViewDl');
   var viewClose = document.getElementById('vViewClose');
   var lastFocus = null;
   function lock(){ document.body.style.overflow='hidden'; }
@@ -283,8 +281,7 @@ body{font-family:var(--sans);font-weight:300;color:var(--cream);background:#0d0b
     if(!view.classList.contains('on')) unlock(); if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
   function mostra(tipo){
     var data = VOUCHER[tipo]; if(!data) return;
-    viewImg.src = data; viewDl.href = data;
-    viewDl.setAttribute('download','voucher-amirante-'+tipo+'.png');
+    viewImg.src = data;
     modal.classList.remove('on'); modal.setAttribute('aria-hidden','true');
     view.classList.add('on'); lock(); viewClose.focus();
   }
